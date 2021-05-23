@@ -177,6 +177,8 @@ a {
 
 #replay {
 	font-size: 1em;
-	margin: 2em 50%;
-	transform: translateX(-50%);
+	/* margin: 2em 50%; */
+	position: relative;
+	left: 50%;
+	transform: translate(-50%, 50%);
 }
