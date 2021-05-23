@@ -6,26 +6,26 @@ body {
 	height: 100%;
 
 	background: rgb(255, 216, 241);
-	/* background: linear-gradient(
-		225deg,
-		rgba(255, 149, 217, 1) 94%,
-		rgba(0, 248, 255, 1) 100%
-	); */
 }
 
 h1 {
 	text-align: center;
-	font-size: 3em;
+	font-size: 2.5em;
 	font-family: "Montserrat", sans-serif;
 	font-weight: normal;
 
 	margin: 0.1em auto 0.5em;
-	width: 10em;
+	width: 80%;
 	border-bottom: 0.05em solid grey;
-	border-radius: 20%;
+	border-radius: 25%;
 	padding: 5px;
 
 	animation: load 200ms ease-in 1;
+}
+
+a {
+	color: black;
+	text-decoration: none;
 }
 
 @keyframes load {
@@ -45,7 +45,7 @@ h1 {
 }
 
 #subheading {
-	margin-top: 4em;
+	margin-top: 3.5em;
 }
 
 .choose {
@@ -83,12 +83,14 @@ h1 {
 	transition: all 100ms ease-in-out;
 }
 
-.choice:hover::before {
+.choice:hover::before,
+.choice:active::before {
 	visibility: visible;
 	transform: scaleX(0.7);
 }
 
-.choice:hover {
+.choice:hover,
+.choice:active {
 	animation: hoverButton 300ms ease 1;
 	/* background-color: rgb(243, 161, 213); */
 	background-color: rgb(255, 190, 231);
@@ -141,14 +143,17 @@ h1 {
 
 .board {
 	display: grid;
-	grid-template-columns: 7em 7em 7em;
-	grid-template-rows: 7em 7em 7em;
+	grid-template-columns: 6em 6em 6em;
+	grid-template-rows: 6em 6em 6em;
 	justify-content: center;
+}
+
+.square {
+	font-size: 4em;
 }
 
 .square,
 #replay {
-	font-size: 4em;
 	font-family: "Montserrat", sans-serif;
 	background-color: rgb(255, 196, 233);
 	border: 1px solid black;
@@ -157,12 +162,18 @@ h1 {
 }
 
 .square:hover,
-#replay:hover {
+#replay:hover,
+.square:active,
+#replay:active,
+.square:focus,
+#replay:focus {
 	background-color: rgb(255, 190, 231);
 	animation: hoverButton 400ms ease-in-out 1;
 }
 
-#replay:hover {
+#replay:hover,
+#replay:active,
+#replay:focus {
 	animation: hoverButton 100ms ease-in-out 1;
 }
 
