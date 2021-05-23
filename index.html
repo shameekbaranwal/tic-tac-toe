@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Quicksand -->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet"> 
+    <!-- Lora -->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
+    <!-- Montserrat  -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:900|Work+Sans:300" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>tic-tac-toe</title>
+</head>
+<body>
+    <h1>TIC TAC TOE</h1>
+    <p class="description" id="subheading">Pick a mode</p>
+    <div class="choose">
+        <button class="choice" id='pvp' >Player vs Player</button>
+        <button class="choice" id='ai' >Player vs AI</button>
+    </div>
+    <div class="game">
+        <p class="description" id="mode-choice"></p>
+        <p class="description" id="status"></p>
+        <div class="board">
+            <button class="square"></button>
+            <button class="square"></button>
+            <button class="square"></button>
+            <button class="square"></button>
+            <button class="square"></button>
+            <button class="square"></button>
+            <button class="square"></button>
+            <button class="square"></button>
+            <button class="square"></button>
+        </div>
+        <button id="replay">Replay</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

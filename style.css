@@ -1,0 +1,173 @@
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+
+	background: rgb(255, 216, 241);
+	/* background: linear-gradient(
+		225deg,
+		rgba(255, 149, 217, 1) 94%,
+		rgba(0, 248, 255, 1) 100%
+	); */
+}
+
+h1 {
+	text-align: center;
+	font-size: 3em;
+	font-family: "Montserrat", sans-serif;
+	font-weight: normal;
+
+	margin: 0.1em auto 0.5em;
+	width: 10em;
+	border-bottom: 0.05em solid grey;
+	border-radius: 20%;
+	padding: 5px;
+
+	animation: load 200ms ease-in 1;
+}
+
+@keyframes load {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 100%;
+	}
+}
+
+.description {
+	text-align: center;
+	animation: load 350ms ease-in 1;
+	font-size: 2.3em;
+	font-family: "Lora", sans-serif;
+}
+
+#subheading {
+	margin-top: 4em;
+}
+
+.choose {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+}
+
+.choice {
+	font-size: 1.8em;
+	font-family: "Lora", sans-serif;
+	width: auto;
+	height: 4em;
+	margin: 2.4em 0.5em 0;
+	cursor: pointer;
+	padding: 1.2em;
+
+	background-color: rgb(255, 196, 233);
+	border-radius: 20%;
+	border: none;
+
+	position: relative;
+}
+
+.choice::before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 1px;
+	bottom: 1.4em;
+	left: 0;
+	background-color: black;
+	visibility: hidden;
+	transform: scaleX(0);
+	transition: all 100ms ease-in-out;
+}
+
+.choice:hover::before {
+	visibility: visible;
+	transform: scaleX(0.7);
+}
+
+.choice:hover {
+	animation: hoverButton 300ms ease 1;
+	/* background-color: rgb(243, 161, 213); */
+	background-color: rgb(255, 190, 231);
+
+	font-weight: bold;
+	border-bottom: 1px solid black;
+}
+
+@keyframes hoverButton {
+	0% {
+		background-color: rgb(255, 196, 233);
+		border: 0px solid black;
+	}
+	20% {
+		background-color: rgb(243, 161, 213);
+		/* background-color: rgb(218, 107, 177); */
+	}
+	100% {
+		background-color: rgb(255, 190, 231);
+		border-bottom: 1px solid black;
+	}
+}
+
+.game {
+	visibility: hidden;
+}
+
+.on {
+	animation: load 300ms ease-in-out 1;
+	transform: scaleX(1);
+	/* transition: all 100ms; */
+	visibility: visible;
+}
+
+.off {
+	/* animation: disappear 200ms ease-in-out 1; */
+	transform: scaleX(0);
+	transition: all 100ms;
+	visibility: hidden;
+}
+
+#mode-choice {
+	font-size: 1.2em;
+	text-decoration: underline;
+}
+
+#status {
+	font-size: 2em;
+}
+
+.board {
+	display: grid;
+	grid-template-columns: 7em 7em 7em;
+	grid-template-rows: 7em 7em 7em;
+	justify-content: center;
+}
+
+.square,
+#replay {
+	font-size: 4em;
+	font-family: "Montserrat", sans-serif;
+	background-color: rgb(255, 196, 233);
+	border: 1px solid black;
+	border-radius: 5%;
+	cursor: pointer;
+}
+
+.square:hover,
+#replay:hover {
+	background-color: rgb(255, 190, 231);
+	animation: hoverButton 400ms ease-in-out 1;
+}
+
+#replay:hover {
+	animation: hoverButton 100ms ease-in-out 1;
+}
+
+#replay {
+	font-size: 1em;
+	margin: 2em 50%;
+	transform: translateX(-50%);
+}
