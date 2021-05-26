@@ -40,7 +40,7 @@ function getNextMove(squares, letters) {
 	return move
 
 	function minimax(sq, depth, isMaximizing) {
-		//terminal condition
+		//terminal condition --- 0 2 7 5 8
 		const winner = checkIfWon(sq)
 		const tie = checkIfTie(sq)
 		if (tie) return 0

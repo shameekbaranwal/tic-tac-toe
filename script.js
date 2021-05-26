@@ -5,6 +5,7 @@ const onlineButton = document.querySelector("#online")
 const subheading = document.querySelector("#subheading")
 
 const game = document.querySelector(`.game`)
+const board = document.querySelector(".board")
 const modeChoice = document.querySelector(`#mode-choice`)
 const status = document.querySelector(`#status`)
 const squares = document.querySelectorAll(`.square`)
@@ -20,6 +21,13 @@ let tie = false
 let xIsNext = true
 let MODE = 0
 
+fadeIn(pvpButton)
+fadeIn(aiButton)
+fadeIn(onlineButton)
+disappear(easy)
+disappear(hard)
+disappear(game)
+
 //Event listeners for the buttons on the home page to select modes
 pvpButton.addEventListener("click", () => {
 	MODE = "PLAYER"
@@ -30,52 +38,52 @@ pvpButton.addEventListener("click", () => {
 
 aiButton.addEventListener("click", () => {
 	MODE = "AI"
+	status.innerHTML = "Choose difficulty."
 	switchMode(true)
 })
 
 easy.addEventListener("click", () => {
 	modeChoice.innerHTML = "Player vs AI"
 	DIFFICULTY = "EASY"
-	easy.parentElement.removeChild(easy)
-	hard.parentElement.removeChild(hard)
-	game.classList.add("on")
+	disappear(easy)
+	disappear(hard)
+	fadeIn(game)
 	updateGame()
 })
 
 hard.addEventListener("click", () => {
 	modeChoice.innerHTML = "Player vs AI"
 	DIFFICULTY = "HARD"
-	easy.parentElement.removeChild(easy, hard)
-	hard.parentElement.removeChild(hard)
-	game.classList.add("on")
+	disappear(easy)
+	disappear(hard)
+	fadeIn(game)
 	updateGame()
 })
 
 //To transition from homepage to the game
 function switchMode(flag) {
-	subheading.classList.add("off")
-	pvpButton.classList.add("off")
-	aiButton.classList.add("off")
-	onlineButton.classList.add("off")
+	disappear(pvpButton, true)
+	disappear(aiButton, true)
+	disappear(onlineButton, true)
 
 	setTimeout(() => {
-		subheading.parentElement.removeChild(subheading)
-		pvpButton.parentElement.removeChild(pvpButton)
-		aiButton.parentElement.removeChild(aiButton)
-		onlineButton.parentElement.removeChild(onlineButton)
+		disappear(subheading)
 		if (flag === undefined) {
 			choiceDivs.forEach((div) => div.parentElement.removeChild(div))
-			game.classList.add("on")
+			fadeIn(game)
 		} else if (flag === 1) {
-			status.classList.add("on")
-			modeChoice.classList.add("on")
+			fadeIn(game)
+			fadeIn(status)
+			fadeIn(modeChoice)
+			disappear(board, "inline")
+			disappear(replay)
 		} else {
-			easy.classList.add("on")
-			hard.classList.add("on")
-			status.classList.add("on")
-			modeChoice.classList.add("on")
+			fadeIn(easy)
+			fadeIn(hard)
+			fadeIn(status)
+			fadeIn(modeChoice)
 		}
-	}, 100)
+	}, 150)
 }
 
 //button to restart the game
@@ -122,6 +130,26 @@ function runAI() {
 
 		updateGame()
 	}, 300)
+}
+
+//function to help with animation -
+function fadeIn(el, setDisplayTo) {
+	el.classList.remove("off")
+	el.classList.add("fade-in")
+	setTimeout(() => {
+		el.style.display = setDisplayTo || "block"
+		el.classList.remove("fade-in")
+	}, 200)
+}
+
+function disappear(el, toDelete) {
+	el.classList.remove("fade-in")
+	el.classList.add("off")
+	setTimeout(() => {
+		el.style.display = "none"
+		el.classList.remove("off")
+		if (toDelete) el.parentElement.removeChild(el)
+	}, 200)
 }
 
 //helper functions

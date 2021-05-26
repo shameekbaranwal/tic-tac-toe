@@ -1,7 +1,3 @@
-html {
-	overflow: hidden;
-}
-
 body {
 	background: rgb(255, 216, 241);
 }
@@ -46,6 +42,7 @@ a {
 	margin-top: 1em;
 }
 
+/* div of choice buttons  */
 .choose {
 	display: flex;
 	flex-flow: row wrap;
@@ -68,6 +65,7 @@ a {
 	position: relative;
 }
 
+/* animated underline on hover */
 .choice::before {
 	content: "";
 	position: absolute;
@@ -113,21 +111,25 @@ a {
 }
 
 .game {
-	visibility: hidden;
+	/* visibility: hidden; */
+	display: none;
 }
 
-.on {
-	animation: load 300ms ease-in-out 1;
-	transform: scaleX(1);
+.fade-in {
 	/* transition: all 100ms; */
-	visibility: visible;
+
+	animation: load 200ms ease-in-out 1;
+	transform: scaleX(1);
+	/* visibility: visible; */
+	display: block;
 }
 
 .off {
 	/* animation: disappear 200ms ease-in-out 1; */
 	transform: scaleX(0);
-	transition: all 100ms;
-	visibility: hidden;
+	transition: all 150ms;
+	/* visibility: hidden; */
+	display: none;
 }
 
 #mode-choice {
@@ -185,9 +187,11 @@ a {
 }
 
 .difficulty {
-	visibility: hidden;
+	/* visibility: hidden; */
+	display: none;
 }
 
 .difficulty.on {
-	visibility: visible;
+	/* visibility: visible; */
+	display: block;
 }
