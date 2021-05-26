@@ -187,7 +187,7 @@ function checkIfWon(sq) {
 
 //helper function to check for tie
 function checkIfTie(sq) {
-	if (winner !== null) return false
+	if (!winner) return false
 
 	for (let i = 0; i < sq.length; i++) {
 		square = sq[i]
