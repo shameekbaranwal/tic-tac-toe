@@ -111,24 +111,18 @@ a {
 }
 
 .game {
-	/* visibility: hidden; */
 	display: none;
 }
 
 .fade-in {
-	/* transition: all 100ms; */
-
 	animation: load 200ms ease-in-out 1;
 	transform: scaleX(1);
-	/* visibility: visible; */
 	display: block;
 }
 
 .off {
-	/* animation: disappear 200ms ease-in-out 1; */
 	transform: scaleX(0);
 	transition: all 150ms;
-	/* visibility: hidden; */
 	display: none;
 }
 
@@ -151,6 +145,8 @@ a {
 
 .square {
 	font-size: 4em;
+	max-width: 6em;
+	max-height: 6em;
 }
 
 .square,
@@ -180,18 +176,15 @@ a {
 
 #replay {
 	font-size: 1em;
-	/* margin: 2em 50%; */
 	position: relative;
 	left: 50%;
 	transform: translate(-50%, 50%);
 }
 
 .difficulty {
-	/* visibility: hidden; */
 	display: none;
 }
 
 .difficulty.on {
-	/* visibility: visible; */
 	display: block;
 }
