@@ -114,7 +114,7 @@ squares.forEach((square) => {
 function updateGame() {
 	sq = getSquaresArray()
 	winner = checkIfWon(sq)
-	tie = checkIfTie(sq)
+	tie = checkIfTie(sq, winner)
 	status.innerHTML = winner ? `${winner} wins!` : xIsNext ? `X` : `O`
 	if (tie) status.innerHTML = "tie"
 }
@@ -186,8 +186,8 @@ function checkIfWon(sq) {
 }
 
 //helper function to check for tie
-function checkIfTie(sq) {
-	if (!winner) return false
+function checkIfTie(sq, winner) {
+	if (winner !== null) return false
 
 	for (let i = 0; i < sq.length; i++) {
 		square = sq[i]
