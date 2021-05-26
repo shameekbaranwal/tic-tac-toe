@@ -1,5 +1,7 @@
 body {
 	background: rgb(255, 216, 241);
+	-webkit-text-size-adjust: 100%;
+	/* trying stackoverflow fix for iOS browsers */
 }
 
 h1 {

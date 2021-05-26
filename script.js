@@ -75,7 +75,7 @@ function switchMode(flag) {
 			fadeIn(game)
 			fadeIn(status)
 			fadeIn(modeChoice)
-			disappear(board, "inline")
+			disappear(board, true)
 			disappear(replay)
 		} else {
 			fadeIn(easy)
