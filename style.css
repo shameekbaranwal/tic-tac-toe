@@ -1,5 +1,22 @@
+:root {
+	--game-bg: rgb(255, 216, 241);
+	--title-underline: grey;
+	--title: black;
+	--choice-bg: rgb(255, 196, 233);
+	--choice-underline: black;
+	--choice-hover-end: rgb(255, 190, 231);
+	--choice-hover-mid: rgb(243, 161, 213);
+	--choice-hover-border: black;
+	--square-bg: rgb(255, 196, 233);
+	--square-border: black;
+	--square-hover-end: rgb(255, 190, 231);
+	--theme-select-border: rgb(243, 148, 208);
+	--theme-button-border: rgb(247, 75, 184);
+	--theme-button-bg: rgb(243, 148, 208);
+}
+
 body {
-	background: rgb(255, 216, 241);
+	background: var(--game-bg);
 	-webkit-text-size-adjust: 100%;
 	/* trying stackoverflow fix for iOS browsers */
 }
@@ -12,7 +29,7 @@ h1 {
 
 	margin: 0.1em auto 0.5em;
 	width: 80%;
-	border-bottom: 0.05em solid grey;
+	border-bottom: 0.05em solid var(--title-underline);
 	border-radius: 25%;
 	padding: 5px;
 
@@ -20,7 +37,7 @@ h1 {
 }
 
 a {
-	color: black;
+	color: var(--title);
 	text-decoration: none;
 }
 
@@ -56,11 +73,11 @@ a {
 	font-family: "Lora", sans-serif;
 	width: auto;
 	height: 4em;
-	margin: 1.7em 0.5em 0;
+	margin: 0.85em 0.5em 0.85em;
 	cursor: pointer;
 	padding: 1.2em;
 
-	background-color: rgb(255, 196, 233);
+	background-color: var(--choice-bg);
 	border-radius: 20%;
 	border: none;
 
@@ -75,7 +92,7 @@ a {
 	height: 1px;
 	bottom: 1.4em;
 	left: 0;
-	background-color: black;
+	background-color: var(--choice-underline);
 	visibility: hidden;
 	transform: scaleX(0);
 	transition: all 100ms ease-in-out;
@@ -91,24 +108,28 @@ a {
 .choice:active {
 	animation: hoverButton 300ms ease 1;
 	/* background-color: rgb(243, 161, 213); */
-	background-color: rgb(255, 190, 231);
+	background-color: var(--choice-hover-end);
 
 	font-weight: bold;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid var(--choice-underline);
+}
+
+#online {
+	margin-bottom: 20px;
 }
 
 @keyframes hoverButton {
 	0% {
-		background-color: rgb(255, 196, 233);
-		border: 0px solid black;
+		background-color: var(--choice-bg);
+		border: 0px solid var(--choice-hover-border);
 	}
 	20% {
-		background-color: rgb(243, 161, 213);
+		background-color: var(--choice-hover-mid);
 		/* background-color: rgb(218, 107, 177); */
 	}
 	100% {
-		background-color: rgb(255, 190, 231);
-		border-bottom: 1px solid black;
+		background-color: var(--choice-hover-end);
+		border-bottom: 1px solid var(--choice-hover-border);
 	}
 }
 
@@ -154,8 +175,8 @@ a {
 .square,
 #replay {
 	font-family: "Montserrat", sans-serif;
-	background-color: rgb(255, 196, 233);
-	border: 1px solid black;
+	background-color: var(--square-bg);
+	border: 1px solid var(--square-border);
 	border-radius: 5%;
 	cursor: pointer;
 }
@@ -166,7 +187,7 @@ a {
 #replay:active,
 .square:focus,
 #replay:focus {
-	background-color: rgb(255, 190, 231);
+	background-color: var(--square-hover-end);
 	animation: hoverButton 400ms ease-in-out 1;
 }
 
@@ -187,6 +208,64 @@ a {
 	display: none;
 }
 
-.difficulty.on {
+.difficulty.fade-in {
 	display: block;
+}
+
+.choose-p {
+	display: none;
+	/* to exclude this p from the flexbox even though it's a child of the flex div */
+	flex: 0 0 100%;
+}
+
+.theme-select::before {
+	content: "";
+	width: 3.8em;
+	height: 1.5em;
+	position: relative;
+	display: block;
+	left: 75%;
+	transform: translateX(-50%);
+	border: 2px solid;
+	border-radius: 35%;
+
+	border-color: var(--theme-select-border);
+}
+
+.theme-button::before {
+	content: "";
+	height: 1.35em;
+	width: 1.35em;
+	position: absolute;
+	display: inline;
+	left: 72%;
+	transform: translate(-50%, -105%);
+	border: 0.15em solid var(--theme-button-border);
+	border-radius: 50%;
+
+	background-color: var(--theme-button-bg);
+	/* background-color: black; */
+	animation: bruh infinite 2000ms ease-in-out;
+}
+
+@keyframes bruh {
+	0% {
+		left: 72%;
+	}
+
+	25% {
+		left: 75%;
+	}
+
+	50% {
+		left: 78%;
+	}
+
+	75% {
+		left: 75%;
+	}
+
+	100% {
+		left: 72%;
+	}
 }

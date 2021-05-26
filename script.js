@@ -12,6 +12,7 @@ const squares = document.querySelectorAll(`.square`)
 const replay = document.querySelector(`#replay`)
 const easy = document.querySelector("#easy")
 const hard = document.querySelector("#hard")
+const chooseText = document.querySelector(".choose-p")
 const choiceDivs = document.querySelectorAll(".choose")
 let DIFFICULTY = null
 
@@ -26,6 +27,7 @@ fadeIn(aiButton)
 fadeIn(onlineButton)
 disappear(easy)
 disappear(hard)
+disappear(chooseText)
 disappear(game)
 
 //Event listeners for the buttons on the home page to select modes
@@ -38,7 +40,6 @@ pvpButton.addEventListener("click", () => {
 
 aiButton.addEventListener("click", () => {
 	MODE = "AI"
-	status.innerHTML = "Choose difficulty."
 	switchMode(true)
 })
 
@@ -47,6 +48,7 @@ easy.addEventListener("click", () => {
 	DIFFICULTY = "EASY"
 	disappear(easy)
 	disappear(hard)
+	disappear(chooseText)
 	fadeIn(game)
 	updateGame()
 })
@@ -56,6 +58,7 @@ hard.addEventListener("click", () => {
 	DIFFICULTY = "HARD"
 	disappear(easy)
 	disappear(hard)
+	disappear(chooseText)
 	fadeIn(game)
 	updateGame()
 })
@@ -80,8 +83,9 @@ function switchMode(flag) {
 		} else {
 			fadeIn(easy)
 			fadeIn(hard)
-			fadeIn(status)
-			fadeIn(modeChoice)
+			fadeIn(chooseText)
+			// fadeIn(status)
+			// fadeIn(modeChoice)
 		}
 	}, 150)
 }
