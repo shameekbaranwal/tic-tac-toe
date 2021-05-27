@@ -14,6 +14,8 @@ const easy = document.querySelector("#easy")
 const hard = document.querySelector("#hard")
 const chooseText = document.querySelector(".choose-p")
 const choiceDivs = document.querySelectorAll(".choose")
+let themeButton = document.querySelector(".theme-button")
+
 let DIFFICULTY = null
 
 //Globals to control the state and info of the game
@@ -207,4 +209,14 @@ onlineButton.addEventListener("click", () => {
 	modeChoice.innerHTML = "Player vs Player (ONLINE)"
 	status.innerHTML = "Coming soon."
 	switchMode(1)
+})
+
+//for themes:
+themeButton.addEventListener("click", () => {
+	themeButton.style.cssText = `
+	animation: kk 1 200ms ease-in-out;
+	`
+	setTimeout(() => {
+		themeButton.style.cssText = `transform: translate(-125%, -100%);`
+	}, 200)
 })

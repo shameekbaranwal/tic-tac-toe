@@ -10,9 +10,10 @@
 	--square-bg: rgb(255, 196, 233);
 	--square-border: black;
 	--square-hover-end: rgb(255, 190, 231);
-	--theme-select-border: rgb(243, 148, 208);
-	--theme-button-border: rgb(247, 75, 184);
-	--theme-button-bg: rgb(243, 148, 208);
+	--theme-select-bg: rgb(255, 200, 235);
+	--theme-button-bg: rgb(253, 170, 223);
+	--theme-select-border: rgb(248, 130, 205);
+	--theme-button-border: rgb(248, 130, 205);
 }
 
 body {
@@ -218,6 +219,11 @@ a {
 	flex: 0 0 100%;
 }
 
+.theme-select {
+	overflow: hidden;
+	display: inline;
+}
+
 .theme-select::before {
 	content: "";
 	width: 3.8em;
@@ -229,43 +235,57 @@ a {
 	border: 2px solid;
 	border-radius: 35%;
 
+	background-color: var(--theme-select-bg);
 	border-color: var(--theme-select-border);
 }
 
-.theme-button::before {
+.theme-button {
 	content: "";
-	height: 1.35em;
-	width: 1.35em;
+	cursor: pointer;
+	height: 2.05em;
+	width: 2.05em;
 	position: absolute;
 	display: inline;
-	left: 72%;
-	transform: translate(-50%, -105%);
-	border: 0.15em solid var(--theme-button-border);
-	border-radius: 50%;
+	left: 75%;
+	transform: translate(-50%, -100%);
+	border: 0.2em solid var(--theme-button-border);
+	border-radius: 45%;
 
 	background-color: var(--theme-button-bg);
-	/* background-color: black; */
-	animation: bruh infinite 2000ms ease-in-out;
+	transition: background-colour 200ms ease-out;
+	/* transition: translate 200ms ease-in-out; */
+	/* animation: bruh infinite 2000ms ease-in-out; */
+}
+
+@keyframes kk {
+	to {
+		transform: translate(-125%, -100%);
+	}
 }
 
 @keyframes bruh {
 	0% {
-		left: 72%;
+		/* left: 72%; */
+		transform: translate(-125%, -100%);
 	}
 
 	25% {
-		left: 75%;
+		/* left: 75%; */
+		transform: translate(-50%, -100%);
 	}
 
 	50% {
-		left: 78%;
+		/* left: 78%; */
+		transform: translate(25%, -100%);
 	}
 
 	75% {
-		left: 75%;
+		/* left: 75%; */
+		transform: translate(-50%, -100%);
 	}
 
 	100% {
-		left: 72%;
+		/* left: 72%; */
+		transform: translate(-125%, -100%);
 	}
 }
