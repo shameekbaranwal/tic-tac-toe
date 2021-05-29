@@ -286,14 +286,14 @@ a {
 _::-webkit-full-page-media,
 _:future,
 :root .square {
-	font-size: 2.8em;
+	font-size: 2.9em;
 }
 
 _::-webkit-full-page-media,
 _:future,
 :root .square:hover,
 .square:active {
-	font-size: 3em;
+	font-size: 2.9em;
 }
 
 .square,
@@ -317,8 +317,7 @@ _:future,
 	border: 1px solid var(--choice-hover-border);
 }
 
-.square:hover,
-.square:active {
+.square:hover {
 	transition: all 150ms;
 	font-size: 4.3em;
 }
