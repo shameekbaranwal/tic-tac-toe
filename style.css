@@ -48,7 +48,7 @@ html {
 	/* text-shadow: 0 0 0.08em white, 0 0 0.25em #0395eb, 0 0 0.44em #0395eb,
 		0 0 0.7em #0395eb; */
 
-	text-shadow: 0 0 0.01em white, 0 0 01em #0395eb, 0 0 0em #0395eb,
+	text-shadow: 0 0 0.01em white, 0 0 0.1em #0395eb, 0 0 0em #0395eb,
 		0 0 0.05em #0395eb;
 	letter-spacing: normal;
 	transition: all 150ms;
@@ -56,7 +56,7 @@ html {
 
 .dark-theme button.txt:hover,
 .dark-theme button.txt:active {
-	text-shadow: 0 0 0.05em white, 0 0 01em #0395eb, 0 0 0em #0395eb,
+	text-shadow: 0 0 0.05em white, 0 0 0.1em #0395eb, 0 0 0em #0395eb,
 		0 0 0.05em #0395eb;
 	font-weight: normal;
 	letter-spacing: 0.1em;
