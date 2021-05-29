@@ -1,5 +1,6 @@
 //DOM cache
 const body = document.body
+const metaThemeColor = document.querySelector('meta[name=theme-color]')
 
 const pvpButton = document.querySelector('#pvp')
 const aiButton = document.querySelector('#ai')
@@ -221,9 +222,11 @@ themeButton.addEventListener('change', () => {
 	if (themeButton.checked) {
 		body.classList.replace('light-theme', 'dark-theme')
 		localStorage.setItem('theme', 'dark-theme')
+		metaThemeColor.setAttribute('content', '#202020')
 	} else {
 		body.classList.replace('dark-theme', 'light-theme')
 		localStorage.setItem('theme', 'light-theme')
+		metaThemeColor.setAttribute('content', '#ffd8f1')
 	}
 })
 
@@ -236,6 +239,9 @@ function setThemeOnStartup() {
 		defaultTheme = theme
 	}
 	body.classList.add(defaultTheme)
+	if (defaultTheme === 'dark-theme')
+		metaThemeColor.setAttribute('content', '#202020')
+	else metaThemeColor.setAttribute('content', '#ffd8f1')
 }
 //setting the localStorage
 function setLocalStorage(theme) {}
