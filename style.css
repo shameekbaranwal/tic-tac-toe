@@ -300,11 +300,11 @@ a {
 
 /* My Safari 7.1+ CSS Hack (Formatted Example) */
 /* Browser Strangeness */
-_::-webkit-full-page-media,
+/* _::-webkit-full-page-media,
 _:future,
 :root .square {
 	font-size: 2.8em;
-	/* https://stackoverflow.com/questions/44941161/safari-on-ios-cant-render-button-text-center-aligned/49012014 */
+	https://stackoverflow.com/questions/44941161/safari-on-ios-cant-render-button-text-center-aligned/49012014
 	padding: 0;
 }
 
@@ -314,7 +314,7 @@ _:future,
 .square:active {
 	padding: 0;
 	font-size: 2.9em;
-}
+} */
 
 .square,
 #replay {
@@ -324,6 +324,7 @@ _:future,
 	border: 1px solid var(--square-border);
 	border-radius: 5%;
 	cursor: pointer;
+	padding: 0;
 }
 
 .square:hover,
