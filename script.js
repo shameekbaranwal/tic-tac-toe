@@ -1,20 +1,23 @@
 //DOM cache
-const pvpButton = document.querySelector("#pvp")
-const aiButton = document.querySelector("#ai")
-const onlineButton = document.querySelector("#online")
-const subheading = document.querySelector("#subheading")
+const body = document.body
+
+const pvpButton = document.querySelector('#pvp')
+const aiButton = document.querySelector('#ai')
+const onlineButton = document.querySelector('#online')
+const subheading = document.querySelector('#subheading')
 
 const game = document.querySelector(`.game`)
-const board = document.querySelector(".board")
+const board = document.querySelector('.board')
 const modeChoice = document.querySelector(`#mode-choice`)
 const status = document.querySelector(`#status`)
 const squares = document.querySelectorAll(`.square`)
 const replay = document.querySelector(`#replay`)
-const easy = document.querySelector("#easy")
-const hard = document.querySelector("#hard")
-const chooseText = document.querySelector(".choose-p")
-const choiceDivs = document.querySelectorAll(".choose")
-let themeButton = document.querySelector(".theme-button")
+const easy = document.querySelector('#easy')
+const hard = document.querySelector('#hard')
+const chooseText = document.querySelector('.choose-p')
+const choiceDivs = document.querySelectorAll('.choose')
+let themeButton = document.querySelector('.theme-button')
+let themeSelect = document.querySelector('.theme-select')
 
 let DIFFICULTY = null
 
@@ -24,30 +27,32 @@ let tie = false
 let xIsNext = true
 let MODE = 0
 
+setThemeOnStartup()
 fadeIn(pvpButton)
 fadeIn(aiButton)
 fadeIn(onlineButton)
+fadeIn(themeSelect)
 disappear(easy)
 disappear(hard)
 disappear(chooseText)
 disappear(game)
 
 //Event listeners for the buttons on the home page to select modes
-pvpButton.addEventListener("click", () => {
-	MODE = "PLAYER"
-	modeChoice.innerHTML = "Player vs Player"
+pvpButton.addEventListener('click', () => {
+	MODE = 'PLAYER'
+	modeChoice.innerHTML = 'Player vs Player'
 	switchMode()
 	updateGame()
 })
 
-aiButton.addEventListener("click", () => {
-	MODE = "AI"
+aiButton.addEventListener('click', () => {
+	MODE = 'AI'
 	switchMode(true)
 })
 
-easy.addEventListener("click", () => {
-	modeChoice.innerHTML = "Player vs AI"
-	DIFFICULTY = "EASY"
+easy.addEventListener('click', () => {
+	modeChoice.innerHTML = 'Player vs AI'
+	DIFFICULTY = 'EASY'
 	disappear(easy)
 	disappear(hard)
 	disappear(chooseText)
@@ -55,9 +60,9 @@ easy.addEventListener("click", () => {
 	updateGame()
 })
 
-hard.addEventListener("click", () => {
-	modeChoice.innerHTML = "Player vs AI"
-	DIFFICULTY = "HARD"
+hard.addEventListener('click', () => {
+	modeChoice.innerHTML = 'Player vs AI'
+	DIFFICULTY = 'HARD'
 	disappear(easy)
 	disappear(hard)
 	disappear(chooseText)
@@ -70,6 +75,7 @@ function switchMode(flag) {
 	disappear(pvpButton, true)
 	disappear(aiButton, true)
 	disappear(onlineButton, true)
+	// disappear(themeSelect)
 
 	setTimeout(() => {
 		disappear(subheading)
@@ -86,16 +92,14 @@ function switchMode(flag) {
 			fadeIn(easy)
 			fadeIn(hard)
 			fadeIn(chooseText)
-			// fadeIn(status)
-			// fadeIn(modeChoice)
 		}
 	}, 150)
 }
 
 //button to restart the game
-replay.addEventListener("click", () => {
+replay.addEventListener('click', () => {
 	squares.forEach((sq) => {
-		sq.innerHTML = ""
+		sq.innerHTML = ''
 	})
 	winner = null
 	tie = null
@@ -105,12 +109,12 @@ replay.addEventListener("click", () => {
 
 //event listener for each button, coupled with a function to re-render game info upon click
 squares.forEach((square) => {
-	square.addEventListener("click", () => {
+	square.addEventListener('click', () => {
 		if (square.innerHTML || winner) return
-		square.innerHTML = xIsNext ? "X" : "O"
+		square.innerHTML = xIsNext ? 'X' : 'O'
 		xIsNext = !xIsNext
 		updateGame()
-		if (MODE === "AI" && !winner && !tie) {
+		if (MODE === 'AI' && !winner && !tie) {
 			runAI()
 		}
 	})
@@ -122,14 +126,14 @@ function updateGame() {
 	winner = checkIfWon(sq)
 	tie = checkIfTie(sq, winner)
 	status.innerHTML = winner ? `${winner} wins!` : xIsNext ? `X` : `O`
-	if (tie) status.innerHTML = "tie"
+	if (tie) status.innerHTML = 'tie'
 }
 
 //helper function to properly call the AI Player
 function runAI() {
 	setTimeout(() => {
 		sq = getSquaresArray()
-		aiMove = xIsNext ? ["O", "X"] : ["X", "O"]
+		aiMove = xIsNext ? ['O', 'X'] : ['X', 'O']
 		squares[getNextMove(sq, aiMove)].innerHTML = aiMove[1]
 
 		xIsNext = !xIsNext
@@ -140,20 +144,20 @@ function runAI() {
 
 //function to help with animation -
 function fadeIn(el, setDisplayTo) {
-	el.classList.remove("off")
-	el.classList.add("fade-in")
+	el.classList.remove('off')
+	el.classList.add('fade-in')
 	setTimeout(() => {
-		el.style.display = setDisplayTo || "block"
-		el.classList.remove("fade-in")
+		el.style.display = setDisplayTo || 'block'
+		el.classList.remove('fade-in')
 	}, 200)
 }
 
 function disappear(el, toDelete) {
-	el.classList.remove("fade-in")
-	el.classList.add("off")
+	el.classList.remove('fade-in')
+	el.classList.add('off')
 	setTimeout(() => {
-		el.style.display = "none"
-		el.classList.remove("off")
+		el.style.display = 'none'
+		el.classList.remove('off')
 		if (toDelete) el.parentElement.removeChild(el)
 	}, 200)
 }
@@ -197,26 +201,41 @@ function checkIfTie(sq, winner) {
 
 	for (let i = 0; i < sq.length; i++) {
 		square = sq[i]
-		if (square === "") return false
+		if (square === '') return false
 	}
 
 	return true
 }
 
 //adding a button for future updates
-onlineButton.addEventListener("click", () => {
-	MODE = "ONLINE"
-	modeChoice.innerHTML = "Player vs Player (ONLINE)"
-	status.innerHTML = "Coming soon."
+onlineButton.addEventListener('click', () => {
+	MODE = 'ONLINE'
+	modeChoice.innerHTML = 'Player vs Player (ONLINE)'
+	status.innerHTML = 'Coming soon.'
 	switchMode(1)
 })
 
-//for themes:
-themeButton.addEventListener("click", () => {
-	themeButton.style.cssText = `
-	animation: kk 1 200ms ease-in-out;
-	`
-	setTimeout(() => {
-		themeButton.style.cssText = `transform: translate(-125%, -100%);`
-	}, 200)
+//to control theme:
+//controlling the checkbox input
+themeButton.addEventListener('change', () => {
+	if (themeButton.checked) {
+		body.classList.replace('light-theme', 'dark-theme')
+		localStorage.setItem('theme', 'dark-theme')
+	} else {
+		body.classList.replace('dark-theme', 'light-theme')
+		localStorage.setItem('theme', 'light-theme')
+	}
 })
+
+//setting the theme on startup
+function setThemeOnStartup() {
+	let defaultTheme = 'light-theme'
+	const theme = localStorage.getItem('theme')
+	if (theme !== defaultTheme) {
+		defaultTheme = theme
+		themeButton.setAttribute('checked', 'true')
+	}
+	body.classList.add(defaultTheme)
+}
+//setting the localStorage
+function setLocalStorage(theme) {}

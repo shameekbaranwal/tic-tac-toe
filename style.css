@@ -1,19 +1,73 @@
-:root {
+html {
+	font-size: 100%;
+}
+
+.light-theme {
 	--game-bg: rgb(255, 216, 241);
 	--title-underline: grey;
 	--title: black;
 	--choice-bg: rgb(255, 196, 233);
-	--choice-underline: black;
+	--choice-text: black;
 	--choice-hover-end: rgb(255, 190, 231);
 	--choice-hover-mid: rgb(243, 161, 213);
 	--choice-hover-border: black;
 	--square-bg: rgb(255, 196, 233);
+	--xo-text: black;
 	--square-border: black;
-	--square-hover-end: rgb(255, 190, 231);
 	--theme-select-bg: rgb(255, 200, 235);
 	--theme-button-bg: rgb(253, 170, 223);
 	--theme-select-border: rgb(248, 130, 205);
 	--theme-button-border: rgb(248, 130, 205);
+	transition: all 500ms;
+}
+
+.light-theme.txt {
+	text-shadow: none;
+}
+
+.dark-theme {
+	--game-bg: rgb(32, 32, 32);
+	--title-underline: grey;
+	--title: rgb(221, 221, 221);
+	--choice-bg: rgb(48, 48, 48);
+	--choice-text: rgb(182, 182, 182);
+	--choice-hover-end: rgb(61, 61, 61);
+	--choice-hover-mid: rgb(41, 41, 41);
+	--choice-hover-border: rgb(77, 76, 76);
+	--square-bg: rgb(70, 70, 70);
+	--xo-text: rgb(189, 189, 189);
+	--square-border: black;
+	--theme-select-bg: rgb(17, 17, 17);
+	--theme-button-bg: rgb(253, 170, 223);
+	--theme-select-border: rgb(248, 130, 205);
+	--theme-button-border: rgb(248, 130, 205);
+	transition: all 500ms;
+}
+
+.dark-theme .txt {
+	/* text-shadow: 0 0 0.08em white, 0 0 0.25em #0395eb, 0 0 0.44em #0395eb,
+		0 0 0.7em #0395eb; */
+
+	text-shadow: 0 0 0.01em white, 0 0 01em #0395eb, 0 0 0em #0395eb,
+		0 0 0.05em #0395eb;
+	letter-spacing: normal;
+	transition: all 150ms;
+}
+
+.dark-theme button.txt:hover,
+.dark-theme button.txt:active {
+	text-shadow: 0 0 0.05em white, 0 0 01em #0395eb, 0 0 0em #0395eb,
+		0 0 0.05em #0395eb;
+	font-weight: normal;
+	letter-spacing: 0.1em;
+}
+
+.dark-theme .square.txt:hover,
+.dark-theme .square.txt:active,
+.dark-theme .square.txt:focus {
+	font-weight: 400;
+	font-size: 4.3em;
+	letter-spacing: normal;
 }
 
 body {
@@ -25,7 +79,7 @@ body {
 h1 {
 	text-align: center;
 	font-size: 2.5em;
-	font-family: "Montserrat", sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-weight: normal;
 
 	margin: 0.1em auto 0.5em;
@@ -55,11 +109,22 @@ a {
 	text-align: center;
 	animation: load 350ms ease-in 1;
 	font-size: 2.3em;
-	font-family: "Lora", sans-serif;
+	color: var(--choice-text);
+	font-family: 'Quicksand', sans-serif;
 }
 
+/* .light-theme .description {
+	font-family: 'Lora', sans-serif;
+	transition: all 100ms;
+}
+
+.dark-theme .description {
+	font-family: 'Quicksand', sans-serif;
+	transition: all 100ms;
+} */
+
 #subheading {
-	margin-top: 1em;
+	margin-top: 0.5em;
 }
 
 /* div of choice buttons  */
@@ -71,7 +136,6 @@ a {
 
 .choice {
 	font-size: 1.8em;
-	font-family: "Lora", sans-serif;
 	width: auto;
 	height: 4em;
 	margin: 0.85em 0.5em 0.85em;
@@ -79,24 +143,40 @@ a {
 	padding: 1.2em;
 
 	background-color: var(--choice-bg);
+	color: var(--choice-text);
 	border-radius: 20%;
 	border: none;
 
+	font-family: 'Quicksand', sans-serif;
+
 	position: relative;
+
+	transition: all 150ms;
 }
+
+/* .light-theme .choice {
+	font-family: 'Lora', sans-serif;
+	transition: all 200ms;
+}
+
+.dark-theme .choice {
+	font-family: 'Quicksand', sans-serif;
+	transition: all 200ms;
+} */
 
 /* animated underline on hover */
 .choice::before {
-	content: "";
+	content: '';
 	position: absolute;
 	width: 100%;
 	height: 1px;
 	bottom: 1.4em;
 	left: 0;
-	background-color: var(--choice-underline);
+	background-color: var(--choice-text);
 	visibility: hidden;
 	transform: scaleX(0);
-	transition: all 100ms ease-in-out;
+	transition: all 200ms ease-in-out;
+	letter-spacing: normal;
 }
 
 .choice:hover::before,
@@ -112,7 +192,10 @@ a {
 	background-color: var(--choice-hover-end);
 
 	font-weight: bold;
-	border-bottom: 1px solid var(--choice-underline);
+	transition: letter-spacing 100ms;
+	letter-spacing: 0.05em;
+	border-bottom: 1px solid var(--choice-hover-border);
+	/* transition: all 150ms; */
 }
 
 #online {
@@ -154,10 +237,12 @@ a {
 	margin-top: 1em;
 	font-size: 1.2em;
 	text-decoration: underline;
+	color: var(--choice-text);
 }
 
 #status {
 	font-size: 2em;
+	color: var(--choice-text);
 }
 
 .board {
@@ -175,7 +260,8 @@ a {
 
 .square,
 #replay {
-	font-family: "Montserrat", sans-serif;
+	color: var(--xo-text);
+	font-family: 'Montserrat', sans-serif;
 	background-color: var(--square-bg);
 	border: 1px solid var(--square-border);
 	border-radius: 5%;
@@ -188,14 +274,20 @@ a {
 #replay:active,
 .square:focus,
 #replay:focus {
-	background-color: var(--square-hover-end);
+	background-color: var(--choice-hover-end);
 	animation: hoverButton 400ms ease-in-out 1;
+}
+
+.square:hover,
+.square:active {
+	font-size: 4.3em;
 }
 
 #replay:hover,
 #replay:active,
 #replay:focus {
 	animation: hoverButton 100ms ease-in-out 1;
+	letter-spacing: 0.1em;
 }
 
 #replay {
@@ -203,6 +295,7 @@ a {
 	position: relative;
 	left: 50%;
 	transform: translate(-50%, 50%);
+	margin-bottom: 20px;
 }
 
 .difficulty {
@@ -220,72 +313,44 @@ a {
 }
 
 .theme-select {
-	overflow: hidden;
-	display: inline;
-}
-
-.theme-select::before {
-	content: "";
-	width: 3.8em;
-	height: 1.5em;
-	position: relative;
 	display: block;
-	left: 75%;
-	transform: translateX(-50%);
-	border: 2px solid;
-	border-radius: 35%;
-
-	background-color: var(--theme-select-bg);
-	border-color: var(--theme-select-border);
+	position: relative;
+	/* border: 1px solid black; */
 }
 
 .theme-button {
-	content: "";
+	left: 50%;
+	transform: translateX(-50%);
+	position: relative;
+	width: 2em;
+	height: 1em;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	background: #646464;
+	outline: none;
+	border-radius: 1em;
+	box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+	transition: 500ms;
 	cursor: pointer;
-	height: 2.05em;
-	width: 2.05em;
+}
+
+.theme-button:checked {
+	background: #0395eb;
+}
+
+.theme-button::before {
+	content: '';
 	position: absolute;
-	display: inline;
-	left: 75%;
-	transform: translate(-50%, -100%);
-	border: 0.2em solid var(--theme-button-border);
-	border-radius: 45%;
-
-	background-color: var(--theme-button-bg);
-	transition: background-colour 200ms ease-out;
-	/* transition: translate 200ms ease-in-out; */
-	/* animation: bruh infinite 2000ms ease-in-out; */
+	width: 1em;
+	height: 1em;
+	border-radius: 50%;
+	top: 0;
+	left: 0;
+	background: #fff;
+	transform: scale(1);
+	transition: 500ms;
 }
 
-@keyframes kk {
-	to {
-		transform: translate(-125%, -100%);
-	}
-}
-
-@keyframes bruh {
-	0% {
-		/* left: 72%; */
-		transform: translate(-125%, -100%);
-	}
-
-	25% {
-		/* left: 75%; */
-		transform: translate(-50%, -100%);
-	}
-
-	50% {
-		/* left: 78%; */
-		transform: translate(25%, -100%);
-	}
-
-	75% {
-		/* left: 75%; */
-		transform: translate(-50%, -100%);
-	}
-
-	100% {
-		/* left: 72%; */
-		transform: translate(-125%, -100%);
-	}
+.theme-button:checked::before {
+	left: 1em;
 }
