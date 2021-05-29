@@ -247,8 +247,8 @@ a {
 
 .board {
 	display: grid;
-	/* grid-template-columns: 6em 6em 6em; */
-	/* grid-template-rows: 6em 6em 6em; */
+	grid-template-columns: 6em 6em 6em;
+	grid-template-rows: 6em 6em 6em;
 	justify-content: center;
 }
 
@@ -259,10 +259,10 @@ a {
 	}
 }
 
-@media only screen and (orientation: portrait) {
+@media only screen and (orientation: portrait) and (max-width: 400px) {
 	.board {
-		grid-template-columns: 27vw 27vw 27vw;
-		grid-template-rows: 27vw 27vw 27vw;
+		grid-template-columns: 18vw 18vw 18vw;
+		grid-template-rows: 18vw 18vw 18vw;
 	}
 }
 
