@@ -231,9 +231,9 @@ themeButton.addEventListener('change', () => {
 function setThemeOnStartup() {
 	let defaultTheme = 'light-theme'
 	const theme = localStorage.getItem('theme')
-	if (theme !== defaultTheme) {
+	if (theme) {
+		if (theme !== defaultTheme) themeButton.setAttribute('checked', 'true')
 		defaultTheme = theme
-		themeButton.setAttribute('checked', 'true')
 	}
 	body.classList.add(defaultTheme)
 }
