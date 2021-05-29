@@ -254,8 +254,8 @@ a {
 
 @media only screen and (orientation: landscape) {
 	.board {
-		grid-template-columns: 20vh 20vh 20vh;
-		grid-template-rows: 20vh 20vh 20vh;
+		grid-template-columns: 16vh 16vh 16vh;
+		grid-template-rows: 16vh 16vh 16vh;
 	}
 }
 
