@@ -68,6 +68,11 @@ html {
 	letter-spacing: normal;
 }
 
+.dark-theme .square.txt:hover,
+.square.txt:active {
+	border: 0px solid var(--choice-hover-border);
+}
+
 body {
 	background: var(--game-bg);
 	-webkit-text-size-adjust: 100%;
@@ -215,6 +220,21 @@ a {
 	}
 }
 
+@keyframes hoverSquare {
+	0% {
+		background-color: var(--choice-bg);
+		border: 0px solid var(--choice-hover-border);
+	}
+	40% {
+		background-color: var(--choice-hover-mid);
+		border: 1px solid var(--choice-hover-border);
+	}
+	100% {
+		background-color: var(--choice-hover-end);
+		border: 0px solid var(--choice-hover-border);
+	}
+}
+
 .game {
 	display: none;
 }
@@ -309,11 +329,10 @@ _:future,
 #replay:hover,
 .square:active,
 #replay:active,
-.square:focus,
+/* .square:focus, */
 #replay:focus {
 	background-color: var(--choice-hover-end);
-	animation: hoverButton 400ms ease-in-out 1;
-	border: 1px solid var(--choice-hover-border);
+	animation: hoverSquare 300ms ease-in-out 1;
 }
 
 .square:hover,
