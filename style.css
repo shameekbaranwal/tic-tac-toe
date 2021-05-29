@@ -267,7 +267,8 @@ a {
 } */
 
 .square {
-	font-size: 6em;
+	font-size: 3em;
+	transition: font-size 150ms;
 	max-width: 6em;
 	max-height: 6em;
 }
@@ -295,6 +296,7 @@ a {
 
 .square:hover,
 .square:active {
+	transition: all 150ms;
 	font-size: 4.3em;
 }
 
