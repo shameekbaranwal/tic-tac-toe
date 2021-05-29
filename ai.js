@@ -3,7 +3,7 @@
 
 function getNextMove(squares, letters) {
 	//global DIFFICULTY will store whether the minimax algorithm will be used or will the computer play random moves
-	if (DIFFICULTY === "EASY") {
+	if (DIFFICULTY === 'EASY') {
 		//helper function that gives us an array of all the playable spots in sq
 		function getEmptySpots(sq) {
 			const s = []
@@ -24,11 +24,11 @@ function getNextMove(squares, letters) {
 	//letters = ['X', 'O'] if user is X and AI is O, and vice versa.
 
 	squares.forEach((square, index) => {
-		if (square === "") {
+		if (square === '') {
 			squares[index] = letters[1]
 			score = minimax(squares, 0, false)
 			//AI has played for its spot, so the minmax call is NOT for the maximizing player now, it's for the User, hence false
-			squares[index] = "" //reset the mutation to prevent bugs
+			squares[index] = '' //reset the mutation to prevent bugs
 			if (score > bestScore) {
 				bestScore = score
 				move = index //this would be the move with the maximum score associated with it (which would be just 1 in this case, with no consideration for the length of the path either. But this same algorithm can be reused in connect-four)
@@ -50,13 +50,13 @@ function getNextMove(squares, letters) {
 		if (isMaximizing) {
 			let bestScore = -Infinity
 			sq.forEach((square, index) => {
-				if (square === "") {
+				if (square === '') {
 					sq[index] = letters[1]
 					bestScore = Math.max(
 						bestScore,
 						minimax(sq, depth + 1, false),
 					)
-					sq[index] = "" //reset the mutation to prevent bugs
+					sq[index] = '' //reset the mutation to prevent bugs
 				}
 			})
 			return bestScore
@@ -64,13 +64,13 @@ function getNextMove(squares, letters) {
 		} else {
 			let bestScore = Infinity
 			sq.forEach((square, index) => {
-				if (square === "") {
+				if (square === '') {
 					sq[index] = letters[0]
 					bestScore = Math.min(
 						bestScore,
 						minimax(sq, depth + 1, true), //true because User has played, so time for Player.
 					)
-					sq[index] = "" //reset the mutation to prevent bugs
+					sq[index] = '' //reset the mutation to prevent bugs
 				}
 			})
 			return bestScore
