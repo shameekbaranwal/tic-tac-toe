@@ -324,6 +324,9 @@ _:future,
 	border: 1px solid var(--square-border);
 	border-radius: 5%;
 	cursor: pointer;
+}
+
+.square {
 	padding: 0;
 }
 
@@ -379,6 +382,7 @@ _:future,
 }
 
 .theme-button {
+	padding: 0;
 	left: 50%;
 	transform: translateX(-50%);
 	position: relative;
@@ -399,6 +403,7 @@ _:future,
 }
 
 .theme-button::before {
+	padding: 0;
 	content: '';
 	position: absolute;
 	width: 1em;
