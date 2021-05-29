@@ -247,9 +247,23 @@ a {
 
 .board {
 	display: grid;
-	grid-template-columns: 6em 6em 6em;
-	grid-template-rows: 6em 6em 6em;
+	/* grid-template-columns: 6em 6em 6em; */
+	/* grid-template-rows: 6em 6em 6em; */
 	justify-content: center;
+}
+
+@media only screen and (orientation: landscape) {
+	.board {
+		grid-template-columns: 20vh 20vh 20vh;
+		grid-template-rows: 20vh 20vh 20vh;
+	}
+}
+
+@media only screen and (orientation: portrait) {
+	.board {
+		grid-template-columns: 27vw 27vw 27vw;
+		grid-template-rows: 27vw 27vw 27vw;
+	}
 }
 
 .square {
