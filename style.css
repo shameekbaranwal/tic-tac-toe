@@ -267,10 +267,26 @@ a {
 } */
 
 .square {
-	font-size: 3em;
+	font-size: 4em;
 	transition: font-size 150ms;
 	max-width: 6em;
 	max-height: 6em;
+}
+
+@media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
+	@media {
+		/*
+      Define here the CSS styles applied only to Safari browsers
+      (any version and any device)
+     */
+		.square {
+			font-size: 2.8em;
+		}
+		.square:hover,
+		.square:active {
+			font-size: 3em;
+		}
+	}
 }
 
 .square,
