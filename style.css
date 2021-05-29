@@ -273,20 +273,27 @@ a {
 	max-height: 6em;
 }
 
-@media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
-	@media {
-		/*
-      Define here the CSS styles applied only to Safari browsers
-      (any version and any device)
-     */
-		.square {
-			font-size: 2.8em;
-		}
-		.square:hover,
-		.square:active {
-			font-size: 3em;
-		}
-	}
+/* .square {
+	font-size: 2.8em;
+}
+.square:hover,
+.square:active {
+	font-size: 3em;
+} */
+
+/* My Safari 7.1+ CSS Hack (Formatted Example) */
+/* Browser Strangeness */
+_::-webkit-full-page-media,
+_:future,
+:root .square {
+	font-size: 2.8em;
+}
+
+_::-webkit-full-page-media,
+_:future,
+:root .square:hover,
+.square:active {
+	font-size: 3em;
 }
 
 .square,
