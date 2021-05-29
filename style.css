@@ -2,6 +2,11 @@ html {
 	font-size: 100%;
 }
 
+* {
+	margin: 0;
+	padding: 0;
+}
+
 .light-theme {
 	--game-bg: rgb(255, 216, 241);
 	--title-underline: grey;
@@ -126,6 +131,7 @@ a {
 
 #subheading {
 	margin-top: 0.5em;
+	margin-bottom: 0.6em;
 }
 
 /* div of choice buttons  */
@@ -251,6 +257,7 @@ a {
 
 #mode-choice {
 	margin-top: 1em;
+	margin-bottom: 1em;
 	font-size: 1.2em;
 	text-decoration: underline;
 	color: var(--choice-text);
@@ -258,6 +265,7 @@ a {
 
 #status {
 	font-size: 2em;
+	margin-bottom: 1em;
 	color: var(--choice-text);
 }
 
@@ -358,6 +366,8 @@ _:future,
 	position: relative;
 	left: 50%;
 	transform: translate(-50%, 50%);
+	margin-top: 0.3em;
+	padding: 0.1em 0.2em;
 	margin-bottom: 20px;
 }
 
